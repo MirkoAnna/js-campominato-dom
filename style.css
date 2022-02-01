@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Utili */
+.hidden {
+    display: none;
+}
+/* Fine utili */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(127, 255, 212);
+}
+
+.container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 11%;
+    background-color: white;
+}
+
+.container header .menu-selector {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+
+}
+
+.container header .menu-selector button {
+    width: 18%;
+    height: 20%;
+    line-height: 20%;
+}
+
+.container header .menu-selector label {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    height: 20%;
+    font-size: 70%;
+}
+
+.container header .menu-selector label select {
+    width: 100%;
+    font-size: 100%;
+    margin: 0 2%;
+    border: 1px solid gray;
+    background-color: white;
+}
+/* Fine header */
+
+/* Main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 11% - 7%);
+}
+
+main .container-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(50% - 11% - 7%);
+    height: calc(50% + 11% + 7%);
+}
+
+/* Applico una grandezza box per ogni difficoltà */
+.box-easy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+    cursor: default;
+}
+
+.box-hard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: 1px solid black;
+    cursor: default;
+}
+
+.box-crazy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: 1px black solid;
+    cursor: default;
+}
+/* Fine applico una grandezza box per ogni difficoltà */
+/* Fine main */
+
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 7%;
+    background-color: white;
+}
+
+footer span {
+    margin-left: 10%;
+}
+/* Fine footer */
+
+.click {
+    background-color: rgb(100, 149, 237);
+    color: white;
+}
