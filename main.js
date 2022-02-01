@@ -19,6 +19,7 @@ cioè il numero di volte che l’utente ha cliccato su una cella che non era una
 document.getElementById('play').addEventListener('click', play);
 function play() {
 
+
     const griglia = document.getElementById('grid');
     
     const numeroBombe = 16;
@@ -28,46 +29,51 @@ function play() {
     console.log(difficolta);
     
     // Applico condizioni per ogni difficoltà
-    // EASY
+    // DIFFICOLTA' EASY
     if(difficolta == 'easy') {
-        
+
+        var bombeGenerate = [];
+
         for (i = 1; i <= 100; i++) {
-            let numero = i;
+            var numero = i;
             const nodo = difficoltaEasy();
             griglia.appendChild(nodo);
             nodo.innerHTML = numero;
-            const bombe = generatoreBombe(numeroBombe, numero);
-            console.log(bombe);
-            nodo.addEventListener('click', 
-            function() {
-                nodo.classList.add('click');
-            });
+            nodo.addEventListener('click', alClick);
+            
         }
-        // HARD
-    }   else if (difficolta == 'hard') {
+        var bombe = generatoreBombe(numeroBombe, numero, bombeGenerate);
+    }   
+
+    // DIFFICOLTA' HARD
+    else if (difficolta == 'hard') {
+
+        var bombeGenerate = [];
         
         for (i = 1; i <= 81; i++) {
-            let numero = i;
+            var numero = i;
             const nodo = difficoltaHard();
             griglia.appendChild(nodo);
             nodo.innerHTML = numero;
-            nodo.addEventListener('click', 
-            function() {
-                nodo.classList.add('click');
-            });
+            nodo.addEventListener('click', alClick);
+            
         }
-        // CRAZY
-    }   else {
+        var bombe = generatoreBombe(numeroBombe, numero, bombeGenerate);
+    }   
+        // DIFFICOLTA' CRAZY
+    else {
+        var bombeGenerate = [];
+
         for (i = 1; i <= 49; i++) {
-            const numero = i;
+
+            var numero = i;
             const nodo = difficoltaCrazy();
             griglia.appendChild(nodo);
             nodo.innerHTML = numero;
-            nodo.addEventListener('click', 
-            function() {
-                nodo.classList.add('click');
-            });
+            nodo.addEventListener('click', alClick);
+    
         }
+        var bombe = generatoreBombe(numeroBombe, numero, bombeGenerate);
     }
 
 
@@ -101,20 +107,31 @@ function play() {
     }
 
 
-    // function alClick() {
-    //     this.classList.add('click');
-    //     this.removeEventListner('click', alClick);
-    // }
-
-    function generatoreBombe(numeroBombe, numeroCaselle) {
-        const bombeGenerate = [];
+    
+    function generatoreBombe(numeroBombe, numero, bombeGenerate) {
         while (bombeGenerate.length < numeroBombe) {
-            const bomba = generatoreNumeroCasuale(1, numeroCaselle);
+            const bomba = generatoreNumeroCasuale(1, numero);
             if (!bombeGenerate.includes(bomba)) {
                 bombeGenerate.push(bomba);
             }
         }
         return bombeGenerate;
+    }
+    function alClick() {
+        this.classList.add('click');
+        this.removeEventListener('click', alClick);
+
+        const casella = parseInt(this.innerHTML);
+
+        console.log('Hai cliccato su: ' + casella);
+        if (bombe.includes(casella)) {
+            alert('XXX BOMBA XXX \n Fine del gioco');
+            return 
+        } else {
+            numeroTentativi.push(casella);
+            console.log('Nessuna bomba');
+        }
+        console.log("Caselle selezionate: " + numeroTentativi);
     }
     // FINE FUNZIONI UTILI
 }
