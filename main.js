@@ -19,14 +19,14 @@ cioè il numero di volte che l’utente ha cliccato su una cella che non era una
 document.getElementById('play').addEventListener('click', play);
 function play() {
 
-
     const griglia = document.getElementById('grid');
+    griglia.innerHTML = "";
     
     const numeroBombe = 16;
-    const numeroTentativi = [];
+    const caselleSelezionate = [];
     
     let difficolta = document.getElementById('difficulty').value;
-    console.log(difficolta);
+    console.log("Difficoltà: " + difficolta + "/ Mosse: 0");
     
     // Applico condizioni per ogni difficoltà
     // DIFFICOLTA' EASY
@@ -122,16 +122,20 @@ function play() {
         this.removeEventListener('click', alClick);
 
         const casella = parseInt(this.innerHTML);
+        let mosse = 0;
+        let azioni = 1;
 
         console.log('Hai cliccato su: ' + casella);
         if (bombe.includes(casella)) {
             alert('XXX BOMBA XXX \n Fine del gioco');
             return 
         } else {
-            numeroTentativi.push(casella);
+            caselleSelezionate.push(casella);
+            mosse = caselleSelezionate.length;
             console.log('Nessuna bomba');
+            console.log("Caselle selezionate: " + caselleSelezionate);
+            console.log('Mosse: ' + mosse);
         }
-        console.log("Caselle selezionate: " + numeroTentativi);
     }
     // FINE FUNZIONI UTILI
 }

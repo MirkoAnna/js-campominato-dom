@@ -138,3 +138,7 @@ footer span {
     background-color: rgb(100, 149, 237);
     color: white;
 }
+
+.red {
+    background-color: red;
+}
